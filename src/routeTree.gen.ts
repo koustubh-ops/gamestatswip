@@ -9,38 +9,146 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudiosRouteImport } from './routes/studios'
+import { Route as RankingsRouteImport } from './routes/rankings'
+import { Route as GamesRouteImport } from './routes/games'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudiosStudioSlugRouteImport } from './routes/studios.$studioSlug'
+import { Route as GamesGameIdRouteImport } from './routes/games.$gameId'
 
+const StudiosRoute = StudiosRouteImport.update({
+  id: '/studios',
+  path: '/studios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingsRoute = RankingsRouteImport.update({
+  id: '/rankings',
+  path: '/rankings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudiosStudioSlugRoute = StudiosStudioSlugRouteImport.update({
+  id: '/$studioSlug',
+  path: '/$studioSlug',
+  getParentRoute: () => StudiosRoute,
+} as any)
+const GamesGameIdRoute = GamesGameIdRouteImport.update({
+  id: '/$gameId',
+  path: '/$gameId',
+  getParentRoute: () => GamesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/games': typeof GamesRouteWithChildren
+  '/rankings': typeof RankingsRoute
+  '/studios': typeof StudiosRouteWithChildren
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/studios/$studioSlug': typeof StudiosStudioSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/games': typeof GamesRouteWithChildren
+  '/rankings': typeof RankingsRoute
+  '/studios': typeof StudiosRouteWithChildren
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/studios/$studioSlug': typeof StudiosStudioSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/favorites': typeof FavoritesRoute
+  '/games': typeof GamesRouteWithChildren
+  '/rankings': typeof RankingsRoute
+  '/studios': typeof StudiosRouteWithChildren
+  '/games/$gameId': typeof GamesGameIdRoute
+  '/studios/$studioSlug': typeof StudiosStudioSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/favorites'
+    | '/games'
+    | '/rankings'
+    | '/studios'
+    | '/games/$gameId'
+    | '/studios/$studioSlug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/favorites'
+    | '/games'
+    | '/rankings'
+    | '/studios'
+    | '/games/$gameId'
+    | '/studios/$studioSlug'
+  id:
+    | '__root__'
+    | '/'
+    | '/favorites'
+    | '/games'
+    | '/rankings'
+    | '/studios'
+    | '/games/$gameId'
+    | '/studios/$studioSlug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FavoritesRoute: typeof FavoritesRoute
+  GamesRoute: typeof GamesRouteWithChildren
+  RankingsRoute: typeof RankingsRoute
+  StudiosRoute: typeof StudiosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/studios': {
+      id: '/studios'
+      path: '/studios'
+      fullPath: '/studios'
+      preLoaderRoute: typeof StudiosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rankings': {
+      id: '/rankings'
+      path: '/rankings'
+      fullPath: '/rankings'
+      preLoaderRoute: typeof RankingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +156,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studios/$studioSlug': {
+      id: '/studios/$studioSlug'
+      path: '/$studioSlug'
+      fullPath: '/studios/$studioSlug'
+      preLoaderRoute: typeof StudiosStudioSlugRouteImport
+      parentRoute: typeof StudiosRoute
+    }
+    '/games/$gameId': {
+      id: '/games/$gameId'
+      path: '/$gameId'
+      fullPath: '/games/$gameId'
+      preLoaderRoute: typeof GamesGameIdRouteImport
+      parentRoute: typeof GamesRoute
+    }
   }
 }
 
+interface GamesRouteChildren {
+  GamesGameIdRoute: typeof GamesGameIdRoute
+}
+
+const GamesRouteChildren: GamesRouteChildren = {
+  GamesGameIdRoute: GamesGameIdRoute,
+}
+
+const GamesRouteWithChildren = GamesRoute._addFileChildren(GamesRouteChildren)
+
+interface StudiosRouteChildren {
+  StudiosStudioSlugRoute: typeof StudiosStudioSlugRoute
+}
+
+const StudiosRouteChildren: StudiosRouteChildren = {
+  StudiosStudioSlugRoute: StudiosStudioSlugRoute,
+}
+
+const StudiosRouteWithChildren =
+  StudiosRoute._addFileChildren(StudiosRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FavoritesRoute: FavoritesRoute,
+  GamesRoute: GamesRouteWithChildren,
+  RankingsRoute: RankingsRoute,
+  StudiosRoute: StudiosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
