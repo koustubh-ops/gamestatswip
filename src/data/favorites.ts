@@ -27,6 +27,9 @@ export function subscribeFavorites(cb: () => void) {
 import { useEffect, useState } from "react";
 export function useFavorites() {
   const [favs, setFavs] = useState<string[]>(() => getFavorites());
-  useEffect(() => subscribeFavorites(() => setFavs(getFavorites())), []);
+  useEffect(() => {
+    const unsub = subscribeFavorites(() => setFavs(getFavorites()));
+    return () => { unsub; };
+  }, []);
   return favs;
 }
