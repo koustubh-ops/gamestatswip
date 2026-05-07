@@ -19,17 +19,14 @@ export function toggleFavorite(id: string): boolean {
   return next.includes(id);
 }
 
-export function subscribeFavorites(cb: () => void) {
+export function subscribeFavorites(cb: () => void): () => void {
   listeners.add(cb);
-  return () => listeners.delete(cb);
+  return () => { listeners.delete(cb); };
 }
 
 import { useEffect, useState } from "react";
 export function useFavorites() {
   const [favs, setFavs] = useState<string[]>(() => getFavorites());
-  useEffect(() => {
-    const unsub = subscribeFavorites(() => setFavs(getFavorites()));
-    return () => { unsub; };
-  }, []);
+  useEffect(() => subscribeFavorites(() => setFavs(getFavorites())), []);
   return favs;
 }
