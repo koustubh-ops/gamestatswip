@@ -120,7 +120,7 @@ function GameDetail() {
           <div>
             <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Tags</h3>
             <div className="flex flex-wrap gap-2">
-              {game.tags.map(t => (
+              {game.tags.map((t: string) => (
                 <span key={t} className="text-xs rounded-full bg-secondary/60 px-2.5 py-1 capitalize">{t}</span>
               ))}
             </div>

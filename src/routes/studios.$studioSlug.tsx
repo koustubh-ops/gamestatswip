@@ -56,7 +56,7 @@ function StudioDetail() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         <div className="absolute bottom-0 inset-x-0 p-6 md:p-8 flex items-end gap-5">
           <div className="h-20 w-20 rounded-2xl glass grid place-items-center font-display font-extrabold text-3xl glow-primary" style={{ color: studio.logoColor }}>
-            {studio.name.split(" ").map(w => w[0]).slice(0,2).join("")}
+            {studio.name.split(" ").map((w: string) => w[0]).slice(0,2).join("")}
           </div>
           <div>
             <h1 className="font-display font-bold text-3xl md:text-5xl text-white drop-shadow">{studio.name}</h1>
