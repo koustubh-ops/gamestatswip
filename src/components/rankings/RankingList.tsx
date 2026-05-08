@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { Game } from "@/data/types";
 import { formatCompact } from "@/components/stats/AnimatedCounter";
+import { GameIcon } from "@/components/ui/GameIcon";
 
 interface Props {
   title: string;
