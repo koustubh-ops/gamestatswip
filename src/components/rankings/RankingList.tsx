@@ -39,7 +39,9 @@ export function RankingList({ title, emoji, games, metric, metricLabel, accent =
               <span className="font-display font-bold text-sm w-6 text-center" style={{ color: accent }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className={`h-8 w-8 rounded-md bg-gradient-to-br ${g.cover} shrink-0`} />
+              <div className={`h-8 w-8 rounded-md bg-gradient-to-br ${g.cover} shrink-0 flex items-center justify-center text-white/85`}>
+                <GameIcon genre={g.genre} className="h-4 w-4" />
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold truncate">{g.title}</div>
                 <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{g.genre}</div>
