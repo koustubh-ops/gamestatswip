@@ -5,9 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * PlayerPulse design system — futuristic gaming dashboard
- * Dark by default. Neon cyan + violet accents on deep navy.
- * All colors are oklch tokens; consume via Tailwind utility classes.
+ * PlayerPulse design system — classy, minimal gaming dashboard.
+ * Warm amber + soft teal on a deep charcoal-blue. Restrained, editorial.
  */
 
 @theme inline {
@@ -48,64 +47,64 @@
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
 
-  --font-display: "Orbitron", "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 
-  --shadow-glow-primary: 0 0 24px color-mix(in oklab, var(--primary) 45%, transparent);
-  --shadow-glow-accent: 0 0 28px color-mix(in oklab, var(--accent) 50%, transparent);
-  --shadow-glow-soft: 0 8px 40px -12px color-mix(in oklab, var(--primary) 35%, transparent);
+  --shadow-glow-primary: 0 10px 40px -16px color-mix(in oklab, var(--primary) 45%, transparent);
+  --shadow-glow-accent:  0 10px 40px -16px color-mix(in oklab, var(--accent) 45%, transparent);
+  --shadow-glow-soft:    0 12px 32px -18px oklch(0 0 0 / 0.55);
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.18 0.08 270), oklch(0.12 0.06 250) 50%, oklch(0.15 0.1 290));
+  --gradient-hero: linear-gradient(135deg, oklch(0.20 0.02 245), oklch(0.16 0.018 250) 60%, oklch(0.18 0.025 220));
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
-  --gradient-card: linear-gradient(140deg, color-mix(in oklab, var(--card) 92%, transparent), color-mix(in oklab, var(--card) 60%, transparent));
+  --gradient-card: linear-gradient(160deg, color-mix(in oklab, var(--card) 96%, transparent), color-mix(in oklab, var(--card) 75%, transparent));
 }
 
-/* Default = dark theme (gaming aesthetic) */
+/* Default = dark theme — classy, low-saturation */
 :root {
-  --radius: 0.875rem;
+  --radius: 0.75rem;
 
-  --background: oklch(0.13 0.035 265);
-  --foreground: oklch(0.97 0.01 240);
+  --background: oklch(0.16 0.012 245);       /* deep charcoal-blue */
+  --foreground: oklch(0.96 0.005 240);
 
-  --card: oklch(0.18 0.04 270);
-  --card-foreground: oklch(0.97 0.01 240);
+  --card: oklch(0.21 0.014 245);
+  --card-foreground: oklch(0.96 0.005 240);
 
-  --popover: oklch(0.16 0.04 270);
-  --popover-foreground: oklch(0.97 0.01 240);
+  --popover: oklch(0.20 0.014 245);
+  --popover-foreground: oklch(0.96 0.005 240);
 
-  --primary: oklch(0.78 0.18 220);          /* electric cyan */
-  --primary-foreground: oklch(0.12 0.04 260);
+  --primary: oklch(0.78 0.13 70);            /* warm amber */
+  --primary-foreground: oklch(0.18 0.02 70);
 
-  --secondary: oklch(0.24 0.05 275);
-  --secondary-foreground: oklch(0.97 0.01 240);
+  --secondary: oklch(0.25 0.012 245);
+  --secondary-foreground: oklch(0.96 0.005 240);
 
-  --muted: oklch(0.22 0.04 275);
-  --muted-foreground: oklch(0.68 0.04 260);
+  --muted: oklch(0.24 0.01 245);
+  --muted-foreground: oklch(0.68 0.012 240);
 
-  --accent: oklch(0.7 0.24 305);             /* violet/magenta */
-  --accent-foreground: oklch(0.12 0.04 260);
+  --accent: oklch(0.72 0.09 200);            /* soft teal */
+  --accent-foreground: oklch(0.16 0.02 240);
 
-  --destructive: oklch(0.65 0.24 25);
+  --destructive: oklch(0.62 0.18 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --success: oklch(0.78 0.2 155);
-  --success-foreground: oklch(0.12 0.04 260);
+  --success: oklch(0.72 0.12 160);
+  --success-foreground: oklch(0.16 0.02 240);
 
-  --warning: oklch(0.82 0.18 80);
-  --warning-foreground: oklch(0.12 0.04 260);
+  --warning: oklch(0.82 0.14 80);
+  --warning-foreground: oklch(0.16 0.02 240);
 
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.78 0.18 220 / 60%);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.78 0.13 70 / 50%);
 
-  --glass: oklch(0.2 0.05 270 / 55%);
-  --glass-border: oklch(1 0 0 / 10%);
+  --glass: oklch(0.22 0.014 245 / 70%);
+  --glass-border: oklch(1 0 0 / 8%);
 
-  --chart-1: oklch(0.78 0.18 220);
-  --chart-2: oklch(0.7 0.24 305);
-  --chart-3: oklch(0.78 0.2 155);
-  --chart-4: oklch(0.82 0.18 80);
-  --chart-5: oklch(0.65 0.24 25);
+  --chart-1: oklch(0.78 0.13 70);
+  --chart-2: oklch(0.72 0.09 200);
+  --chart-3: oklch(0.72 0.12 160);
+  --chart-4: oklch(0.7  0.1  20);
+  --chart-5: oklch(0.65 0.08 290);
 
   --sidebar: var(--card);
   --sidebar-foreground: var(--foreground);
@@ -152,13 +151,13 @@
   }
   body {
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%);
+      radial-gradient(ellipse 70% 40% at 50% -10%, color-mix(in oklab, var(--primary) 8%, transparent), transparent 65%),
+      radial-gradient(ellipse 50% 30% at 100% 100%, color-mix(in oklab, var(--accent) 7%, transparent), transparent 65%);
     background-attachment: fixed;
   }
   h1, h2, h3, .font-display {
     font-family: var(--font-display);
-    letter-spacing: 0.01em;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -170,7 +169,7 @@
     border: 1px solid var(--glass-border);
   }
   .neon-text {
-    text-shadow: 0 0 18px color-mix(in oklab, var(--primary) 70%, transparent);
+    text-shadow: 0 1px 0 color-mix(in oklab, var(--primary) 25%, transparent);
   }
   .glow-primary { box-shadow: var(--shadow-glow-primary); }
   .glow-accent  { box-shadow: var(--shadow-glow-accent); }
