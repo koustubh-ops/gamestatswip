@@ -6,6 +6,8 @@ import { getStudioById } from "@/data/studios";
 import { PlatformIcons } from "@/components/ui/PlatformIcons";
 import { TrendingBadge } from "@/components/ui/TrendingBadge";
 import { RatingStars } from "@/components/ui/RatingStars";
+import { GameIcon } from "@/components/ui/GameIcon";
+import { StudioIcon } from "@/components/ui/StudioIcon";
 import { formatCompact } from "@/components/stats/AnimatedCounter";
 import { useFavorites, toggleFavorite } from "@/data/favorites";
 import { toast } from "sonner";
@@ -30,7 +32,11 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
       >
         {/* Cover */}
         <div className={`relative h-36 bg-gradient-to-br ${game.cover} overflow-hidden`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_55%)]" />
+          {/* Big genre icon as visual identity */}
+          <div className="absolute inset-0 flex items-center justify-center text-white/35">
+            <GameIcon genre={game.genre} className="h-16 w-16 drop-shadow-md" />
+          </div>
           <div className="absolute top-2 left-2"><TrendingBadge trending={game.trending} /></div>
           <button
             onClick={(e) => {
@@ -43,8 +49,11 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
           >
             <Heart className={`h-4 w-4 ${isFav ? "fill-destructive text-destructive" : "text-white"}`} />
           </button>
-          <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-            <div className="text-[10px] uppercase tracking-widest text-white/70">{game.genre}</div>
+          <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+            <div className="text-[10px] uppercase tracking-widest text-white/70 flex items-center gap-1.5">
+              <GameIcon genre={game.genre} className="h-3 w-3" />
+              {game.genre}
+            </div>
             <div className="font-display font-bold text-white truncate">{game.title}</div>
           </div>
         </div>
@@ -52,7 +61,10 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
         {/* Body */}
         <div className="p-4 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground truncate">{studio?.name}</span>
+            <span className="text-xs text-muted-foreground truncate flex items-center gap-1.5">
+              {studio && <StudioIcon studioId={studio.id} className="h-3.5 w-3.5" />}
+              {studio?.name}
+            </span>
             <RatingStars rating={game.rating} />
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
