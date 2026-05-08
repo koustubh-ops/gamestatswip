@@ -5,9 +5,9 @@ import { RankingList, metricActive, metricDownloads, metricGrowth } from "@/comp
 export const Route = createFileRoute("/rankings")({
   head: () => ({
     meta: [
-      { title: "Rankings — PlayerPulse" },
+      { title: "Rankings — Gamestats" },
       { name: "description", content: "Top active games, fastest growing titles, dead lobbies, sweaty matches and the most addictive games — ranked." },
-      { property: "og:title", content: "Game Rankings on PlayerPulse" },
+      { property: "og:title", content: "Game Rankings on Gamestats" },
       { property: "og:description", content: "Top active, fastest growing, most addictive and the saddest dead games — ranked weekly." },
     ],
   }),

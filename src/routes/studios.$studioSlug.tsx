@@ -16,12 +16,12 @@ export const Route = createFileRoute("/studios/$studioSlug")({
   },
   head: ({ loaderData }) => {
     const s = loaderData?.studio;
-    if (!s) return { meta: [{ title: "Studio — PlayerPulse" }] };
+    if (!s) return { meta: [{ title: "Studio — Gamestats" }] };
     return {
       meta: [
-        { title: `${s.name} — PlayerPulse` },
+        { title: `${s.name} — Gamestats` },
         { name: "description", content: `${s.name} games, active players and trends. ${s.description}` },
-        { property: "og:title", content: `${s.name} on PlayerPulse` },
+        { property: "og:title", content: `${s.name} on Gamestats` },
         { property: "og:description", content: s.description },
       ],
     };

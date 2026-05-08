@@ -5,9 +5,9 @@ import { StudioCard } from "@/components/studio/StudioCard";
 export const Route = createFileRoute("/studios")({
   head: () => ({
     meta: [
-      { title: "Game Studios — PlayerPulse" },
+      { title: "Game Studios — Gamestats" },
       { name: "description", content: "Explore the studios shaping modern gaming. Riot, Valve, Supercell, Ubisoft and more." },
-      { property: "og:title", content: "Game Studios on PlayerPulse" },
+      { property: "og:title", content: "Game Studios on Gamestats" },
       { property: "og:description", content: "The biggest names in gaming, ranked by active footprint." },
     ],
   }),

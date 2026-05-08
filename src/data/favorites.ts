@@ -1,5 +1,5 @@
 // Local-storage favorites. Tiny event-bus so any component subscribes to changes.
-const KEY = "playerpulse:favorites";
+const KEY = "gamestats:favorites";
 const listeners = new Set<() => void>();
 
 export function getFavorites(): string[] {
