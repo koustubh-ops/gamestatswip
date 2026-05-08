@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { Studio } from "@/data/types";
 import { GAMES } from "@/data/games";
-import { StudioIcon } from "@/components/ui/StudioIcon";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: number }) {
   const games = GAMES.filter(g => g.studioId === studio.id);
@@ -22,11 +22,11 @@ export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: numb
       >
         <div className={`relative h-24 bg-gradient-to-br ${studio.banner}`}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.22),transparent_60%)]" />
-          <div className="absolute right-3 top-3 text-white/40">
-            <StudioIcon studioId={studio.id} className="h-10 w-10" />
+          <div className="absolute right-3 top-3">
+            <BrandLogo id={studio.id} kind="studio" className="h-10 w-10 opacity-95" />
           </div>
-          <div className="absolute -bottom-6 left-4 h-12 w-12 rounded-xl glass flex items-center justify-center" style={{ color: studio.logoColor }}>
-            <StudioIcon studioId={studio.id} className="h-6 w-6" />
+          <div className="absolute -bottom-6 left-4 h-12 w-12 rounded-xl glass flex items-center justify-center">
+            <BrandLogo id={studio.id} kind="studio" className="h-6 w-6" color={studio.logoColor.replace("#","")} />
           </div>
         </div>
         <div className="pt-8 p-4 space-y-2">

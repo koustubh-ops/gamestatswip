@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { Game } from "@/data/types";
 import { formatCompact } from "@/components/stats/AnimatedCounter";
-import { GameIcon } from "@/components/ui/GameIcon";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 interface Props {
   title: string;
@@ -39,8 +39,8 @@ export function RankingList({ title, emoji, games, metric, metricLabel, accent =
               <span className="font-display font-bold text-sm w-6 text-center" style={{ color: accent }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div className={`h-8 w-8 rounded-md bg-gradient-to-br ${g.cover} shrink-0 flex items-center justify-center text-white/85`}>
-                <GameIcon genre={g.genre} className="h-4 w-4" />
+              <div className={`h-8 w-8 rounded-md bg-gradient-to-br ${g.cover} shrink-0 flex items-center justify-center p-1`}>
+                <BrandLogo id={g.id} kind="game" genre={g.genre} className="h-5 w-5" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold truncate">{g.title}</div>

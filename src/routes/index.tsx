@@ -9,7 +9,7 @@ import { StudioCard } from "@/components/studio/StudioCard";
 import { StatTile } from "@/components/stats/StatTile";
 import { AnimatedCounter, formatCompact } from "@/components/stats/AnimatedCounter";
 import { SearchBar } from "@/components/ui/SearchBar";
-import { GameIcon } from "@/components/ui/GameIcon";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -100,8 +100,8 @@ function HomePage() {
               <li key={g.id}>
                 <Link to="/games/$gameId" params={{ gameId: g.slug }} className="flex items-center gap-4 p-3 rounded-xl hover:bg-secondary/40 transition">
                   <span className="font-display font-bold w-8 text-center text-primary">{String(i+1).padStart(2,"0")}</span>
-                  <div className={`h-10 w-10 rounded-md bg-gradient-to-br ${g.cover} flex items-center justify-center text-white/85`}>
-                    <GameIcon genre={g.genre} className="h-5 w-5" />
+                  <div className={`h-10 w-10 rounded-md bg-gradient-to-br ${g.cover} flex items-center justify-center p-1.5`}>
+                    <BrandLogo id={g.id} kind="game" genre={g.genre} className="h-6 w-6" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold truncate">{g.title}</div>

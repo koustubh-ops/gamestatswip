@@ -7,7 +7,7 @@ import { PlatformIcons } from "@/components/ui/PlatformIcons";
 import { TrendingBadge } from "@/components/ui/TrendingBadge";
 import { RatingStars } from "@/components/ui/RatingStars";
 import { GameIcon } from "@/components/ui/GameIcon";
-import { StudioIcon } from "@/components/ui/StudioIcon";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { formatCompact } from "@/components/stats/AnimatedCounter";
 import { useFavorites, toggleFavorite } from "@/data/favorites";
 import { toast } from "sonner";
@@ -33,9 +33,9 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
         {/* Cover */}
         <div className={`relative h-36 bg-gradient-to-br ${game.cover} overflow-hidden`}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_55%)]" />
-          {/* Big genre icon as visual identity */}
-          <div className="absolute inset-0 flex items-center justify-center text-white/35">
-            <GameIcon genre={game.genre} className="h-16 w-16 drop-shadow-md" />
+          {/* Brand logo as visual identity (falls back to genre icon) */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <BrandLogo id={game.id} kind="game" genre={game.genre} className="h-16 w-16 opacity-90 drop-shadow-md" />
           </div>
           <div className="absolute top-2 left-2"><TrendingBadge trending={game.trending} /></div>
           <button
@@ -62,7 +62,7 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
         <div className="p-4 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs text-muted-foreground truncate flex items-center gap-1.5">
-              {studio && <StudioIcon studioId={studio.id} className="h-3.5 w-3.5" />}
+              {studio && <BrandLogo id={studio.id} kind="studio" className="h-3.5 w-3.5" />}
               {studio?.name}
             </span>
             <RatingStars rating={game.rating} />
