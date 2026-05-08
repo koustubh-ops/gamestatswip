@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { Studio } from "@/data/types";
 import { GAMES } from "@/data/games";
+import { StudioIcon } from "@/components/ui/StudioIcon";
 
 export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: number }) {
   const games = GAMES.filter(g => g.studioId === studio.id);
@@ -20,9 +21,12 @@ export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: numb
         className="block glass rounded-2xl overflow-hidden group hover:glow-accent transition-shadow"
       >
         <div className={`relative h-24 bg-gradient-to-br ${studio.banner}`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.3),transparent_60%)]" />
-          <div className="absolute -bottom-6 left-4 h-12 w-12 rounded-xl glass flex items-center justify-center font-display font-bold text-lg" style={{ color: studio.logoColor }}>
-            {studio.name.split(" ").map(w => w[0]).slice(0,2).join("")}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.22),transparent_60%)]" />
+          <div className="absolute right-3 top-3 text-white/40">
+            <StudioIcon studioId={studio.id} className="h-10 w-10" />
+          </div>
+          <div className="absolute -bottom-6 left-4 h-12 w-12 rounded-xl glass flex items-center justify-center" style={{ color: studio.logoColor }}>
+            <StudioIcon studioId={studio.id} className="h-6 w-6" />
           </div>
         </div>
         <div className="pt-8 p-4 space-y-2">
