@@ -20,8 +20,8 @@ export function Navbar() {
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent grid place-items-center glow-primary group-hover:scale-110 transition">
               <Gamepad2 className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="font-display font-bold text-lg tracking-wider">
-              PLAYER<span className="gradient-text">PULSE</span>
+            <span className="font-display font-bold text-lg tracking-wide">
+              GAME<span className="gradient-text">STATS</span>
             </span>
           </Link>
 
