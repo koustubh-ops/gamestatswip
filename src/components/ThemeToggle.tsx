@@ -11,7 +11,7 @@ export function ThemeToggle() {
     const next = !light;
     document.documentElement.classList.toggle("light", next);
     setLight(next);
-    try { localStorage.setItem("playerpulse:theme", next ? "light" : "dark"); } catch {}
+    try { localStorage.setItem("gamestats:theme", next ? "light" : "dark"); } catch {}
   }
   return (
     <button

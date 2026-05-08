@@ -20,12 +20,12 @@ export const Route = createFileRoute("/games/$gameId")({
   },
   head: ({ loaderData }) => {
     const g = loaderData?.game;
-    if (!g) return { meta: [{ title: "Game — PlayerPulse" }] };
+    if (!g) return { meta: [{ title: "Game — Gamestats" }] };
     return {
       meta: [
-        { title: `${g.title} — PlayerPulse` },
+        { title: `${g.title} — Gamestats` },
         { name: "description", content: `${g.title}: ${formatCompact(g.activePlayers)} active players, peak ${formatCompact(g.peakPlayers)}. ${g.description}` },
-        { property: "og:title", content: `${g.title} on PlayerPulse` },
+        { property: "og:title", content: `${g.title} on Gamestats` },
         { property: "og:description", content: g.description },
       ],
     };

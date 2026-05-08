@@ -62,10 +62,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "PlayerPulse — Live Gaming Analytics" },
+      { title: "Gamestats — Live Gaming Analytics" },
       { name: "description", content: "Track trending games, top studios, active player counts and live rankings across the gaming universe." },
-      { name: "author", content: "PlayerPulse" },
-      { property: "og:title", content: "PlayerPulse — Live Gaming Analytics" },
+      { name: "author", content: "Gamestats" },
+      { property: "og:title", content: "Gamestats — Live Gaming Analytics" },
       { property: "og:description", content: "The pulse of every game, studio and trend — in one futuristic dashboard." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

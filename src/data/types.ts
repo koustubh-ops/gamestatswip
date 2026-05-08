@@ -1,4 +1,4 @@
-// Shared types for PlayerPulse mock + API data
+// Shared types for Gamestats mock + API data
 export type Platform = "PC" | "PS5" | "Xbox" | "Switch" | "Mobile" | "Web";
 export type Genre =
   | "Shooter" | "MOBA" | "Battle Royale" | "RPG" | "MMO" | "Strategy"

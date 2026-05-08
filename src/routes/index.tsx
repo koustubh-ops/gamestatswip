@@ -14,9 +14,9 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PlayerPulse — Live Gaming Analytics Dashboard" },
+      { title: "Gamestats — Live Gaming Analytics Dashboard" },
       { name: "description", content: "The pulse of every game, studio and trend. Trending titles, active players and rankings — updated live." },
-      { property: "og:title", content: "PlayerPulse — Live Gaming Analytics" },
+      { property: "og:title", content: "Gamestats — Live Gaming Analytics" },
       { property: "og:description", content: "Track trending games, top studios and live player counts in one futuristic dashboard." },
     ],
   }),

@@ -7,10 +7,10 @@ import { GameGrid } from "@/components/game/GameGrid";
 export const Route = createFileRoute("/favorites")({
   head: () => ({
     meta: [
-      { title: "Your Favorites — PlayerPulse" },
+      { title: "Your Favorites — Gamestats" },
       { name: "description", content: "Your favorited games, saved locally for quick access." },
       { property: "og:title", content: "Your Favorite Games" },
-      { property: "og:description", content: "Quickly jump back into the games you've pinned on PlayerPulse." },
+      { property: "og:description", content: "Quickly jump back into the games you've pinned on Gamestats." },
     ],
   }),
   component: FavoritesPage,

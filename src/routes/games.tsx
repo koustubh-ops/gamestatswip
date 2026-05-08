@@ -12,9 +12,9 @@ type Sort = "active" | "peak" | "rating" | "downloads";
 export const Route = createFileRoute("/games")({
   head: () => ({
     meta: [
-      { title: "Browse Games — PlayerPulse" },
+      { title: "Browse Games — Gamestats" },
       { name: "description", content: "Explore every tracked game with filters by platform, genre and studio. Sort by active players, downloads and rating." },
-      { property: "og:title", content: "Browse Games — PlayerPulse" },
+      { property: "og:title", content: "Browse Games — Gamestats" },
       { property: "og:description", content: "Explore every tracked game. Filter by platform, genre, studio. Sort by players or rating." },
     ],
   }),
