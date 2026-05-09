@@ -65,6 +65,9 @@ export const GAMES: Game[] = [
   // Krafton
   { id: "pubg", slug: "pubg-battlegrounds", title: "PUBG: Battlegrounds", studioId: "krafton", genre: "Battle Royale", platforms: ["PC","PS5","Xbox","Mobile"], cover: "from-yellow-500 to-rose-600", releaseYear: 2017, activePlayers: 410000, peakPlayers: 3200000, downloads: 1100000000, rating: 4.0, trending: "down", growthPct: -3.4, tags: ["sweaty","competitive","esports"], playerHistory: makeHistory(28, 460000, -2500), description: "The original 100-player battle royale." },
 
+  // DICE / EA — new
+  { id: "bf6", slug: "battlefield-6", title: "Battlefield 6", studioId: "ea", genre: "Shooter", platforms: ["PC","PS5","Xbox"], cover: "from-orange-500 to-red-700", releaseYear: 2025, activePlayers: 670000, peakPlayers: 1450000, downloads: 18000000, rating: 4.4, trending: "hot", growthPct: 27.3, tags: ["competitive","sweaty","esports"], playerHistory: makeHistory(31, 200000, 42000), description: "DICE returns to all-out warfare with destructible cities and 64-player conquest." },
+
   // Cult / dying
   { id: "anthem", slug: "anthem", title: "Anthem", studioId: "ea", genre: "RPG", platforms: ["PC","PS5","Xbox"], cover: "from-slate-600 to-zinc-700", releaseYear: 2019, activePlayers: 180, peakPlayers: 60000, downloads: 5000000, rating: 2.4, trending: "dead", growthPct: -45.0, tags: ["casual"], playerHistory: makeHistory(29, 1200, -120), description: "Once-promising looter shooter, abandoned mid-rework." },
   { id: "lawbreakers", slug: "lawbreakers", title: "LawBreakers", studioId: "epic", genre: "Shooter", platforms: ["PC"], cover: "from-stone-500 to-zinc-700", releaseYear: 2017, activePlayers: 8, peakPlayers: 7500, downloads: 600000, rating: 3.0, trending: "dead", growthPct: -60.0, tags: ["competitive"], playerHistory: makeHistory(30, 50, -8), description: "Cult-favorite arena FPS that went silent." },
