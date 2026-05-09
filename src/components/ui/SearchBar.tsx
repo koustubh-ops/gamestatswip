@@ -38,7 +38,9 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
               <div className="text-[10px] uppercase tracking-widest text-muted-foreground px-2 pt-1">Games</div>
               {results.games.map(g => (
                 <Link key={g.id} to="/games/$gameId" params={{ gameId: g.slug }} onClick={() => setQ("")} className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary/50">
-                  <div className={`h-7 w-7 rounded-md bg-gradient-to-br ${g.cover}`} />
+                  <div className={`h-8 w-8 rounded-md bg-gradient-to-br ${g.cover} grid place-items-center shrink-0`}>
+                    <BrandLogo id={g.id} kind="game" genre={g.genre} className="h-5 w-5" />
+                  </div>
                   <span className="text-sm flex-1 truncate">{g.title}</span>
                   <span className="text-[10px] text-muted-foreground">{g.genre}</span>
                 </Link>
