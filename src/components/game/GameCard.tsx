@@ -9,6 +9,7 @@ import { RatingStars } from "@/components/ui/RatingStars";
 import { GameIcon } from "@/components/ui/GameIcon";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { formatCompact } from "@/components/stats/AnimatedCounter";
+import { LivePlayers } from "@/components/stats/LivePlayers";
 import { useFavorites, toggleFavorite } from "@/data/favorites";
 import { toast } from "sonner";
 
