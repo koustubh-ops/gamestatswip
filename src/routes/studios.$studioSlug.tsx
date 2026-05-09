@@ -7,6 +7,10 @@ import { AnimatedCounter, formatCompact } from "@/components/stats/AnimatedCount
 import { PlayerTrendChart } from "@/components/charts/PlayerTrendChart";
 import { GenreBreakdown } from "@/components/charts/GenreBreakdown";
 import { GameCard } from "@/components/game/GameCard";
+import { Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { LivePlayers } from "@/components/stats/LivePlayers";
+import { Download } from "lucide-react";
 
 export const Route = createFileRoute("/studios/$studioSlug")({
   loader: ({ params }) => {
