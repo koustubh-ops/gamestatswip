@@ -70,8 +70,8 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <div className="rounded-lg bg-secondary/40 p-2">
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Users className="h-3 w-3" /> Active</div>
-              <div className="font-display text-primary text-base">{formatCompact(game.activePlayers)}</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground flex items-center gap-1"><Users className="h-3 w-3" /> Live now</div>
+              <div className="font-display text-primary text-base"><LivePlayers base={game.activePlayers} seed={index + 1} /></div>
             </div>
             <div className="rounded-lg bg-secondary/40 p-2">
               <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Peak</div>
