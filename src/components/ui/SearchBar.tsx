@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { STUDIOS } from "@/data/studios";
+import { BrandLogo } from "./BrandLogo";
 
 export function SearchBar({ compact = false }: { compact?: boolean }) {
   const [q, setQ] = useState("");
