@@ -7,6 +7,10 @@ import { AnimatedCounter, formatCompact } from "@/components/stats/AnimatedCount
 import { PlayerTrendChart } from "@/components/charts/PlayerTrendChart";
 import { GenreBreakdown } from "@/components/charts/GenreBreakdown";
 import { GameCard } from "@/components/game/GameCard";
+import { Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { LivePlayers } from "@/components/stats/LivePlayers";
+import { Download } from "lucide-react";
 
 export const Route = createFileRoute("/studios/$studioSlug")({
   loader: ({ params }) => {
@@ -103,6 +107,50 @@ function StudioDetail() {
         <h2 className="font-display font-bold text-2xl mb-5">Top performing games</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {topDl.map((g, i) => <GameCard key={g.id} game={g} index={i} />)}
+        </div>
+      </section>
+
+      {/* Live breakdown table: per-game live players + lifetime downloads */}
+      <section className="mt-12">
+        <div className="flex items-end justify-between mb-5">
+          <h2 className="font-display font-bold text-2xl">Live breakdown</h2>
+          <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-success animate-ping opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+            </span>
+            updating live
+          </span>
+        </div>
+        <div className="glass rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-12 px-4 py-3 text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border/40">
+            <div className="col-span-6 sm:col-span-5">Game</div>
+            <div className="col-span-2 hidden sm:block">Genre</div>
+            <div className="col-span-3 sm:col-span-2 text-right">Live now</div>
+            <div className="col-span-3 sm:col-span-3 text-right flex items-center justify-end gap-1"><Download className="h-3 w-3" /> Downloads</div>
+          </div>
+          {[...games].sort((a,b) => b.activePlayers - a.activePlayers).map((g, i) => (
+            <Link
+              key={g.id}
+              to="/games/$gameId"
+              params={{ gameId: g.slug }}
+              className="grid grid-cols-12 items-center px-4 py-3 hover:bg-secondary/40 transition-colors border-b border-border/30 last:border-0"
+            >
+              <div className="col-span-6 sm:col-span-5 flex items-center gap-3 min-w-0">
+                <div className={`h-9 w-9 shrink-0 rounded-lg bg-gradient-to-br ${g.cover} grid place-items-center`}>
+                  <BrandLogo id={g.id} kind="game" genre={g.genre} className="h-5 w-5" />
+                </div>
+                <span className="font-medium truncate">{g.title}</span>
+              </div>
+              <div className="col-span-2 hidden sm:block text-xs text-muted-foreground">{g.genre}</div>
+              <div className="col-span-3 sm:col-span-2 text-right font-display text-primary">
+                <LivePlayers base={g.activePlayers} seed={i + 1} steamAppId={g.steamAppId} />
+              </div>
+              <div className="col-span-3 sm:col-span-3 text-right font-display text-accent">
+                {formatCompact(g.downloads)}
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
