@@ -37,6 +37,7 @@ export const GAME_LOGO_SLUGS: Record<string, string> = {
   genshin: "genshinimpact",
   starrail: "honkaistarrail",
   pubg: "pubg",
+  bf6: "battledotnet",
   // No reliable simpleicons for: tft, deadlock, r6s, thedivision2, skullbones,
   // gtav, rdr2, zzz, anthem, lawbreakers — these gracefully fall back.
 };
