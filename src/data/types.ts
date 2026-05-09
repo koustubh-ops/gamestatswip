@@ -34,4 +34,5 @@ export interface Game {
   tags: ("sweaty" | "addictive" | "casual" | "competitive" | "esports")[];
   playerHistory: { month: string; players: number }[];
   description: string;
+  steamAppId?: number;       // when set, LivePlayers fetches the real Steam count
 }

@@ -1,5 +1,7 @@
 // Brand logo slugs from simpleicons.org (https://cdn.simpleicons.org/{slug}/{color}).
-// Components fall back to a lucide icon when a slug is missing or fails to load.
+// Components fall back to a lucide genre icon when a slug is missing or fails to load.
+// We deliberately omit slugs that don't visually match the game (e.g. generic
+// publisher marks) so the genre icon shows instead.
 
 export const STUDIO_LOGO_SLUGS: Record<string, string> = {
   riot: "riotgames",
@@ -26,20 +28,16 @@ export const GAME_LOGO_SLUGS: Record<string, string> = {
   clashroyale: "clashroyale",
   fortnite: "fortnite",
   fallguys: "fallguys",
-  warzone: "callofduty",
-  modernwarfare: "callofduty",
   minecraft: "minecraft",
   apex: "apexlegends",
-  fc25: "easports",
-  thesims4: "thesims",
-  smashbros: "supersmashbros",
-  totk: "nintendoswitch",
-  genshin: "genshinimpact",
-  starrail: "honkaistarrail",
   pubg: "pubg",
-  bf6: "battledotnet",
-  // No reliable simpleicons for: tft, deadlock, r6s, thedivision2, skullbones,
-  // gtav, rdr2, zzz, anthem, lawbreakers — these gracefully fall back.
+  genshin: "genshinimpact",
+  // Intentionally NOT mapped — the available simpleicons brand mark doesn't
+  // match the game and looked off in cards (publisher logo, console logo, etc.)
+  // Falls back to a clean genre icon instead:
+  // tft, deadlock, r6s, thedivision2, skullbones, warzone, modernwarfare,
+  // gtav, rdr2, fc25, thesims4, smashbros, totk, starrail, zzz, bf6,
+  // anthem, lawbreakers
 };
 
 export const logoUrl = (slug: string, color = "white") =>
