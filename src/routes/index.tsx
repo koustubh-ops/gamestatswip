@@ -32,24 +32,20 @@ function HomePage() {
   return (
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero */}
-      <section className="relative pt-12 pb-16 md:pt-20 md:pb-24">
-        <div className="absolute inset-0 -z-10 opacity-60">
-          <div className="absolute top-10 left-10 h-72 w-72 rounded-full bg-primary/30 blur-3xl animate-float" />
-          <div className="absolute bottom-0 right-10 h-80 w-80 rounded-full bg-accent/30 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        </div>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1 text-xs uppercase tracking-widest mb-6">
-            <span className="h-2 w-2 rounded-full bg-success animate-pulse-glow" />
+      <section className="relative pt-16 pb-14 md:pt-24 md:pb-20 border-b border-border">
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
             Live across {totalStudios} studios
           </div>
-          <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl leading-tight">
-            The <span className="gradient-text neon-text">pulse</span> of every game
+          <h1 className="font-display font-semibold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+            The pulse of every game,
+            <span className="text-muted-foreground"> in one place.</span>
           </h1>
-          <p className="mt-5 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Track trending titles, active player counts and the studios shaping the meta — all in one futuristic dashboard.
+          <p className="mt-5 text-base text-muted-foreground max-w-xl">
+            Track trending titles, active player counts and the studios shaping the meta.
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8">
             <SearchBar />
           </div>
         </motion.div>
