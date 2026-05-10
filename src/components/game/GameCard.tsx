@@ -30,9 +30,14 @@ export function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
         params={{ gameId: game.slug }}
         className="block bg-card border border-border rounded-lg overflow-hidden hover:border-foreground/20 transition-colors"
       >
-        <div className="relative h-32 bg-secondary/40 border-b border-border overflow-hidden">
+        <div className={`relative h-32 border-b border-border overflow-hidden bg-gradient-to-br ${game.cover}`}>
+          {/* Subtle texture + dark scrim so the logo stays legible */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.18),transparent_60%)]" />
+          <div className="absolute inset-0 bg-background/35" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <BrandLogo id={game.id} kind="game" genre={game.genre} className="h-12 w-12 opacity-80" />
+            <div className="rounded-xl bg-background/40 backdrop-blur-sm border border-white/10 p-3 shadow-lg transition-transform duration-300 group-hover:scale-110">
+              <BrandLogo id={game.id} kind="game" genre={game.genre} className="h-10 w-10" />
+            </div>
           </div>
           <div className="absolute top-2 left-2"><TrendingBadge trending={game.trending} /></div>
           <button

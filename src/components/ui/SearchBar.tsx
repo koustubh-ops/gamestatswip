@@ -25,27 +25,21 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
       .map(g => ({ g, s: score(g.title, term) }))
       .filter(x => x.s < 99)
       .sort((a, b) => a.s - b.s)
-      .slice(0, 5)
       .map(x => x.g);
 
     const studios = STUDIOS
       .map(s => ({ s, sc: score(s.name, term) }))
       .filter(x => x.sc < 99)
       .sort((a, b) => a.sc - b.sc)
-      .slice(0, 4)
       .map(x => x.s);
 
-    // Show only the matching kind. If both match, pick the kind with the
-    // strongest top hit; ties favor games.
+    // Strict mode: show only the single best match across games + studios.
     const topGame = games[0] ? score(games[0].title, term) : 99;
     const topStudio = studios[0] ? score(studios[0].name, term) : 99;
-    const showGames = games.length > 0 && topGame <= topStudio;
-    const showStudios = studios.length > 0 && topStudio < topGame;
 
-    return {
-      games: showGames ? games : [],
-      studios: showStudios ? studios : [],
-    };
+    if (topGame === 99 && topStudio === 99) return { games: [], studios: [] };
+    if (topGame <= topStudio) return { games: games.slice(0, 1), studios: [] };
+    return { games: [], studios: studios.slice(0, 1) };
   }, [q]);
 
   return (
