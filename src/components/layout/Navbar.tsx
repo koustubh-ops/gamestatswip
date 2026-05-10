@@ -13,15 +13,15 @@ const links = [
 export function Navbar() {
   const loc = useLocation();
   return (
-    <header className="sticky top-0 z-40">
-      <div className="glass border-b">
+    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur border-b border-border">
+      <div>
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
           <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-accent grid place-items-center glow-primary group-hover:scale-110 transition">
-              <Gamepad2 className="h-4 w-4 text-primary-foreground" />
+            <div className="h-7 w-7 rounded-md bg-foreground grid place-items-center">
+              <Gamepad2 className="h-4 w-4 text-background" />
             </div>
-            <span className="font-display font-bold text-lg tracking-wide">
-              GAME<span className="gradient-text">STATS</span>
+            <span className="font-display font-semibold text-base tracking-tight">
+              Gamestats
             </span>
           </Link>
 

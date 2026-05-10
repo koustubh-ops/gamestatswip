@@ -10,34 +10,29 @@ export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: numb
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4, delay: Math.min(index * 0.05, 0.4) }}
-      whileHover={{ y: -4 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.3) }}
     >
       <Link
         to="/studios/$studioSlug"
         params={{ studioSlug: studio.slug }}
-        className="block glass rounded-2xl overflow-hidden group hover:glow-accent transition-shadow"
+        className="block bg-card border border-border rounded-lg overflow-hidden hover:border-foreground/20 transition-colors"
       >
-        <div className={`relative h-24 bg-gradient-to-br ${studio.banner}`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.22),transparent_60%)]" />
-          <div className="absolute right-3 top-3">
-            <BrandLogo id={studio.id} kind="studio" className="h-10 w-10 opacity-95" />
+        <div className="flex items-center gap-3 p-4 border-b border-border">
+          <div className="h-12 w-12 rounded-md bg-secondary border border-border flex items-center justify-center shrink-0">
+            <BrandLogo id={studio.id} kind="studio" className="h-7 w-7" />
           </div>
-          <div className="absolute -bottom-6 left-4 h-12 w-12 rounded-xl glass flex items-center justify-center">
-            <BrandLogo id={studio.id} kind="studio" className="h-6 w-6" color={studio.logoColor.replace("#","")} />
+          <div className="min-w-0 flex-1">
+            <h3 className="font-display font-semibold text-base truncate">{studio.name}</h3>
+            <span className="text-xs text-muted-foreground">{studio.country} · est. {studio.founded}</span>
           </div>
         </div>
-        <div className="pt-8 p-4 space-y-2">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display font-bold text-lg">{studio.name}</h3>
-            <span className="text-xs text-muted-foreground">{studio.country}</span>
-          </div>
+        <div className="p-4 space-y-3">
           <p className="text-xs text-muted-foreground line-clamp-2">{studio.description}</p>
-          <div className="flex items-center justify-between pt-2 text-xs">
+          <div className="flex items-center justify-between pt-3 text-xs border-t border-border/60 -mx-4 px-4">
             <span className="text-muted-foreground">{games.length} titles</span>
-            <span className="text-primary font-semibold">{(totalPlayers/1_000_000).toFixed(1)}M active</span>
+            <span className="text-foreground font-semibold">{(totalPlayers/1_000_000).toFixed(1)}M active</span>
           </div>
         </div>
       </Link>
