@@ -28,7 +28,7 @@ export const GAME_LOGO_SLUGS: Record<string, string> = {
   clashroyale: "clashroyale",
   fortnite: "fortnite",
   fallguys: "fallguys",
-  minecraft: "minecraft",
+  // minecraft slug renders as a placeholder on simpleicons — fall back to Sandbox genre icon
   apex: "apexlegends",
   pubg: "pubg",
   genshin: "genshinimpact",
