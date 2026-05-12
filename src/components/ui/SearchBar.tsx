@@ -21,25 +21,25 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
     const term = q.trim().toLowerCase();
     if (!term) return null;
 
-    const games = GAMES
+    // Require at least a word-boundary match (score <= 2) so random substrings
+    // never surface an unrelated card.
+    const MAX = 2;
+
+    const bestGame = GAMES
       .map(g => ({ g, s: score(g.title, term) }))
-      .filter(x => x.s < 99)
-      .sort((a, b) => a.s - b.s)
-      .map(x => x.g);
+      .filter(x => x.s <= MAX)
+      .sort((a, b) => a.s - b.s)[0];
 
-    const studios = STUDIOS
+    const bestStudio = STUDIOS
       .map(s => ({ s, sc: score(s.name, term) }))
-      .filter(x => x.sc < 99)
-      .sort((a, b) => a.sc - b.sc)
-      .map(x => x.s);
+      .filter(x => x.sc <= MAX)
+      .sort((a, b) => a.sc - b.sc)[0];
 
-    // Strict mode: show only the single best match across games + studios.
-    const topGame = games[0] ? score(games[0].title, term) : 99;
-    const topStudio = studios[0] ? score(studios[0].name, term) : 99;
-
-    if (topGame === 99 && topStudio === 99) return { games: [], studios: [] };
-    if (topGame <= topStudio) return { games: games.slice(0, 1), studios: [] };
-    return { games: [], studios: studios.slice(0, 1) };
+    if (!bestGame && !bestStudio) return { games: [], studios: [] };
+    if (bestGame && (!bestStudio || bestGame.s <= bestStudio.sc)) {
+      return { games: [bestGame.g], studios: [] };
+    }
+    return { games: [], studios: [bestStudio!.s] };
   }, [q]);
 
   return (

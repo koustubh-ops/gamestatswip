@@ -17,7 +17,7 @@ export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: numb
       <Link
         to="/studios/$studioSlug"
         params={{ studioSlug: studio.slug }}
-        className="block bg-card border border-border rounded-lg overflow-hidden hover:border-foreground/20 transition-colors"
+        className="flex h-full flex-col bg-card border border-border rounded-lg overflow-hidden hover:border-foreground/30 hover:shadow-md transition-all"
       >
         <div className="flex items-center gap-3 p-4 border-b border-border">
           <div className="h-12 w-12 rounded-md bg-secondary border border-border flex items-center justify-center shrink-0">
@@ -28,9 +28,9 @@ export function StudioCard({ studio, index = 0 }: { studio: Studio; index?: numb
             <span className="text-xs text-muted-foreground">{studio.country} · est. {studio.founded}</span>
           </div>
         </div>
-        <div className="p-4 space-y-3">
+        <div className="p-4 flex-1 flex flex-col">
           <p className="text-xs text-muted-foreground line-clamp-2">{studio.description}</p>
-          <div className="flex items-center justify-between pt-3 text-xs border-t border-border/60 -mx-4 px-4">
+          <div className="flex items-center justify-between pt-3 mt-auto text-xs border-t border-border/60 -mx-4 px-4">
             <span className="text-muted-foreground">{games.length} titles</span>
             <span className="text-foreground font-semibold">{(totalPlayers/1_000_000).toFixed(1)}M active</span>
           </div>
