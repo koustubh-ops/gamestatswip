@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { Search, X } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { Search, X, CornerDownLeft } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { STUDIOS } from "@/data/studios";
 import { BrandLogo } from "./BrandLogo";
@@ -17,12 +17,12 @@ function score(name: string, term: string) {
 
 export function SearchBar({ compact = false }: { compact?: boolean }) {
   const [q, setQ] = useState("");
+  const navigate = useNavigate();
+
   const results = useMemo(() => {
     const term = q.trim().toLowerCase();
     if (!term) return null;
 
-    // Require at least a word-boundary match (score <= 2) so random substrings
-    // never surface an unrelated card.
     const MAX = 2;
 
     const bestGame = GAMES
@@ -42,6 +42,19 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
     return { games: [], studios: [bestStudio!.s] };
   }, [q]);
 
+  function go() {
+    if (!results) return;
+    const game = results.games[0];
+    const studio = results.studios[0];
+    if (game) {
+      setQ("");
+      navigate({ to: "/games/$gameId", params: { gameId: game.slug } });
+    } else if (studio) {
+      setQ("");
+      navigate({ to: "/studios/$studioSlug", params: { studioSlug: studio.slug } });
+    }
+  }
+
   return (
     <div className={`relative ${compact ? "w-full max-w-sm" : "w-full max-w-xl"}`}>
       <div className="relative">
@@ -49,6 +62,14 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
         <input
           value={q}
           onChange={e => setQ(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              go();
+            } else if (e.key === "Escape") {
+              setQ("");
+            }
+          }}
           placeholder="Search games or studios"
           className="w-full bg-card/60 border border-border rounded-md pl-10 pr-10 py-2 text-sm outline-none focus:border-foreground/40 focus:bg-card transition"
         />
@@ -70,6 +91,7 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
               </div>
               <span className="text-sm flex-1 truncate">{g.title}</span>
               <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{g.genre}</span>
+              <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70" />
             </Link>
           ))}
           {results.studios.map(s => (
@@ -79,6 +101,7 @@ export function SearchBar({ compact = false }: { compact?: boolean }) {
               </div>
               <span className="text-sm flex-1 truncate">{s.name}</span>
               <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Studio</span>
+              <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground/70" />
             </Link>
           ))}
         </div>
