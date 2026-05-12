@@ -4,7 +4,10 @@ import { Moon, Sun } from "lucide-react";
 export function ThemeToggle() {
   const [light, setLight] = useState(false);
   useEffect(() => {
-    const isLight = document.documentElement.classList.contains("light");
+    let saved: string | null = null;
+    try { saved = localStorage.getItem("gamestats:theme"); } catch {}
+    const isLight = saved ? saved === "light" : document.documentElement.classList.contains("light");
+    document.documentElement.classList.toggle("light", isLight);
     setLight(isLight);
   }, []);
   function toggle() {
